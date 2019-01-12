@@ -1,6 +1,8 @@
 // "Hello, world!" for the Padauk PFS154, to be compiled with SDCC.
 // Source code under CC0 1.0.
 
+// Output on PA0 at 9600 baud.
+
 #include <stdbool.h>
 #include <stdio.h>
 
