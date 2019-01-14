@@ -2,7 +2,7 @@
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
-// Output on PA0 at 9600 baud.
+// Output on PA0 at 1200 baud.
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -64,10 +64,10 @@ unsigned char _sdcc_external_startup(void)
 
 void main(void)
 {
-	// Set timer 2 for interrupt at 9600 baud.
+	// Set timer 2 for interrupt for 1200 baud.
 	tm2c = 0x10; // Use CLK (8 Mhz)
 	tm2s = 0x61; // Divide by 64 ~> 125 kHz
-	tm2b = 104;  // Divide by 104 ~> 9600 Hz
+	tm2b = 104;  // Divide by 104 ~> 1202 Hz
 	inten = 0x00;
 __asm
 	engint
