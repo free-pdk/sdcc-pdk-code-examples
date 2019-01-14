@@ -1,4 +1,4 @@
-// A port of the Mini-C TimerIrqBlink example code from https://github.com/free-pdk/simple-pdk-code-examples to the sdcc-based toolchain
+// A port of the Mini-C TimerIrqBlink example code from https://github.com/free-pdk/simple-pdk-code-examples to the SDCC-based toolchain
 // Written by Philipp Klaus Krause in 2019.
 // Source code under MIT, like the original.
 
