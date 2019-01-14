@@ -1,6 +1,6 @@
 These are code examples for Padauk Microcontrollers.
 
-The are meant to be compiled with the Small Device C Compiler (SDCC).
+They are meant to be compiled with the Small Device C Compiler (SDCC).
 
 The SDCC-based toolchain is still experimental as of 2019-01-14, so even compiling these simple examples might not fully work yet, and require manual postprocessing (e.g. in relocation).
 
