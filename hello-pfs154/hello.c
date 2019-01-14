@@ -1,4 +1,5 @@
 // "Hello, world!" for the Padauk PFS154, to be compiled with SDCC.
+// Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
 // Output on PA0 at 9600 baud.
