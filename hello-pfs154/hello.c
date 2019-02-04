@@ -17,13 +17,19 @@ __sfr __at(0x05) intrq;
 __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
 __sfr __at(0x1c) tm2c;
+__sfr __at(0x1d) tm2ct;
 __sfr __at(0x17) tm2s;
 __sfr __at(0x09) tm2b;
 
 void send_bit(void) __interrupt(0)
 {
+	// Reset interrupt request, proceed only if we had a timer interrupt.
 	if(!(intrq & 0x40))
+	{
+		intrq = 0x00;
 		return;
+	}
+	intrq = 0x00;
 
 	if(!sending)
 		return;
@@ -47,6 +53,8 @@ int putchar(int c)
 
 	sendcounter = 10;
 
+	tm2ct = 0;
+
 	sending = true;
 
 	inten |= 0x40;
@@ -56,8 +64,8 @@ int putchar(int c)
 
 unsigned char _sdcc_external_startup(void)
 {
-	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock
-	clkmd = 0x30; // Disable ILRC, watchdog
+	clkmd = 0x3c; // Use IHRC / 2 = 8 Mhz for system clock
+	clkmd = 0x38; // Disable ILRC, watchdog
 
 	return 0; // perform normal initialization
 }
