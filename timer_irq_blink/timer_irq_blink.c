@@ -43,25 +43,26 @@ void Interrupt(void)
 __sfr __at(0x03) clkmd;
 __sfr __at(0x04) inten;
 __sfr __at(0x05) intrq;
-__sfr __at(0x05) t16m;
+__sfr __at(0x06) t16m;
 __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
 __sfr16 t16cnt;
 
 #define INT_T16 0x04
 
+#define LEDpin 0    // Modify this to select the PIN the LED is connected to. Default: PA.0
+
 unsigned char _sdcc_external_startup(void)
 {
-	clkmd = 0x08; // Use IHRC / 16 = 1 Mhz for system clock, disable watchdog.
-
+	clkmd = 0x18; // Use IHRC / 16 = 1 Mhz for system clock, disable watchdog. Enable IHRC
 	return 0; // perform normal initialization
 }
 
 void main(void)
 {
-	pac |= (1 << 3);
+	pac |= (1 << LEDpin);
 
-	t16m = (1 << 5) | (3 << 3) | 4;
+	t16m = (1 << 5) | (3 << 3) | 4;  // timer clock=system clock (1MHz), Divide by 64, use bit 12 of timer as irq source
 
 	t16cnt = 0;
 
@@ -76,12 +77,12 @@ __endasm;
 	while(1);
 }
 
-void handler(void) __interrupt
+void handler(void) __interrupt(0)
 {
 	if (intrq & INT_T16)
 	{
-		pa ^= (1 << 3);
-                intrq &= ~INT_T16;
+		pa ^= (1 << LEDpin);
+        intrq &= ~INT_T16;
 	}
 }
 
