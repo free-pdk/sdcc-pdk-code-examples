@@ -64,8 +64,8 @@ int putchar(int c)
 
 unsigned char _sdcc_external_startup(void)
 {
-	clkmd = 0x3c; // Use IHRC / 2 = 8 Mhz for system clock
-	clkmd = 0x38; // Disable ILRC, watchdog
+	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
+	clkmd = 0x30; // Disable ILRC
 
 	return 0; // perform normal initialization
 }
