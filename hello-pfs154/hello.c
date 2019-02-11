@@ -73,9 +73,9 @@ unsigned char _sdcc_external_startup(void)
 void main(void)
 {
 	// Set timer 2 for interrupt for 1200 baud.
-	tm2c = 0x10; // Use CLK (8 Mhz)
-	tm2s = 0x61; // Divide by 64 ~> 125 kHz
-	tm2b = 104;  // Divide by 104 ~> 1202 Hz
+	tm2c = 0x10; // Use CLK (8 Mhz) by 2 ~> 4 Mhz
+	tm2s = 0x10; // Divide by 16 + 1 ~> 235294 Hz
+	tm2b = 195;  // Divide by 195 + 1 ~> 1200 Hz
 	inten = 0x00;
 __asm
 	engint
@@ -85,7 +85,7 @@ __endasm;
 
 	for(;;)
 	{
-		printf("Hello World!\n");
+		printf("Hello, World!\n");
 		for(unsigned long int i = 0; i < 150000; i++); // Wait approx. 3s.
 	}
 }

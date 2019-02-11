@@ -52,9 +52,9 @@ unsigned char _sdcc_external_startup(void)
 void main(void)
 {
 	// Set timer 2 for interrupt at 1 kHz.
-	tm2c = 0x10; // Use CLK (8 Mhz)
-	tm2s = 0x61; // Divide by 64 ~> 125 kHz
-	tm2b = 125;  // Divide by 104 ~> 1 kHz
+	tm2c = 0x10; // Use CLK (8 Mhz) by 2 ~> 4 Mhz
+	tm2s = 0x54; // Divide by 16 * 25 ~> 10 kHz
+	tm2b = 9;  // Divide by 9 + 1 ~> 1 kHz
 	inten = 0x00;
 __asm
 	engint
