@@ -14,6 +14,7 @@ volatile bool sending;
 __sfr __at(0x03) clkmd;
 __sfr __at(0x04) inten;
 __sfr __at(0x05) intrq;
+__sfr __at(0x0b) ihrcr;
 __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
 __sfr __at(0x1c) tm2c;
@@ -64,6 +65,8 @@ int putchar(int c)
 
 unsigned char _sdcc_external_startup(void)
 {
+	ihrcr = *((const unsigned char*)(0x87ed)); // Use factory calibration value for IHRC at 16 Mhz.
+
 	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
 	clkmd = 0x30; // Disable ILRC
 
