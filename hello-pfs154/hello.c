@@ -2,7 +2,7 @@
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
-// Output on PA0 at 1200 baud.
+// Output on PA7 at 115200 baud.
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -35,7 +35,7 @@ void send_bit(void) __interrupt(0)
 	if(!sending)
 		return;
 
-	pa = senddata & 1;
+	pa = (senddata & 1)?0x80:0;
 	senddata >>= 1;
 
 	if(!--sendcounter)
@@ -75,21 +75,22 @@ unsigned char _sdcc_external_startup(void)
 
 void main(void)
 {
-	// Set timer 2 for interrupt for 1200 baud.
-	tm2c = 0x10; // Use CLK (8 Mhz) by 2 ~> 4 Mhz
-	tm2s = 0x10; // Divide by 16 + 1 ~> 235294 Hz
-	tm2b = 195;  // Divide by 195 + 1 ~> 1200 Hz
-	inten = 0x00;
+	// Set timer 2 for interrupt for 115200 baud.
+	tm2c = 0x20;       // Use IHRC -> 16 Mhz
+	tm2s = 0x01;       // Prescale 1, Scaler 2 ~> 8MHz
+	tm2b = 68;         // Divide by 68 + 1 ~> 115942 Hz (∞115200)
+	pac = 0x80;        // Enable PA.7 as output
+	senddata = 0xD55F; // Setup 2 stop bits, 0x55 char for autobaud, 1 start bit, 5 stop bits (shifted out right)
+	sendcounter = 16;  // Send out initial stop bits and autobaud char 
+	inten = 0x40;      // Enable TM2 interrupt
 __asm
 	engint
 __endasm;
 
-	pac = 0x01;
-
 	for(;;)
 	{
 		printf("Hello, World!\n");
-		for(unsigned long int i = 0; i < 150000; i++); // Wait approx. 3s.
+		for(unsigned long int i=1500000; i>0; i--); // Wait approx. 3s
 	}
 }
 
