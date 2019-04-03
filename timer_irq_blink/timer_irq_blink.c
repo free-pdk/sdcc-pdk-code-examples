@@ -82,7 +82,7 @@ void handler(void) __interrupt(0)
 	if (intrq & INT_T16)
 	{
 		pa ^= (1 << LEDpin);
-        intrq &= ~INT_T16;
+		intrq &= ~INT_T16;
 	}
 }
 
