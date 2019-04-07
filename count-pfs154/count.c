@@ -32,6 +32,7 @@ void tick(void) __interrupt(0)
 {
 	if(!(intrq & 0x40))
 		return;
+	intrq = 0x00;
 
 	clocktime++;
 	clockupdate = true;
@@ -66,7 +67,8 @@ void main(void)
 	tm2c = 0x10; // Use CLK (8 Mhz) by 2 ~> 4 Mhz
 	tm2s = 0x54; // Divide by 16 * 25 ~> 10 kHz
 	tm2b = 9;  // Divide by 9 + 1 ~> 1 kHz
-	inten = 0x00;
+	inten = 0x40;
+
 __asm
 	engint
 __endasm;

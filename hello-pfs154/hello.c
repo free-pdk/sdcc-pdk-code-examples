@@ -86,7 +86,7 @@ void main(void)
 	tm2c = 0x10; // Use CLK (8 Mhz) by 2 ~> 4 Mhz
 	tm2s = 0x10; // Divide by 16 + 1 ~> 235294 Hz
 	tm2b = 195;  // Divide by 195 + 1 ~> 1200 Hz
-	inten = 0x00;
+	inten = 0x40;
 __asm
 	engint
 __endasm;
