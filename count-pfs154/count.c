@@ -8,11 +8,19 @@ __sfr __at(0x03) clkmd;
 __sfr __at(0x04) inten;
 __sfr __at(0x05) intrq;
 __sfr __at(0x0b) ihrcr;
+#ifdef __SDCC_pdk15
+__sfr __at(0x13) pb;
+__sfr __at(0x14) pbc;
+__sfr __at(0x30) tm2c;
+__sfr __at(0x32) tm2s;
+__sfr __at(0x33) tm2b;
+#else
 __sfr __at(0x14) pb;
 __sfr __at(0x15) pbc;
 __sfr __at(0x1c) tm2c;
 __sfr __at(0x17) tm2s;
 __sfr __at(0x09) tm2b;
+#endif
 
 typedef unsigned long int clock_t;
 #define CLOCKS_PER_SEC 1000ul
@@ -66,6 +74,6 @@ __endasm;
 	pbc = 0x0f;
 
 	for(;;)
-		pb = clock() % 4;
+		pb = (clock() / 1000) % 16;
 }
 

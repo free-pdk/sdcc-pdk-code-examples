@@ -5,3 +5,10 @@ They are meant to be compiled with the Small Device C Compiler (SDCC).
 For pdk14, the SDCC backend is stable.
 For pdk13 and pdk15, the SDCC-based toolchain is still experimental as of 2019-04-03, so even compiling these simple examples might not fully work yet, and require manual postprocessing (e.g. in relocation).
 
+Currently, there are 4 demos:
+
+count-pfs154: A timer / LED example for the PFS154 and PFS173.
+hello-pfs15: A serial output example for the PFS154 and PFS173.
+timer_irq_blink: An example ported from MINI-C to SDCC:
+watchdog: An example ported from MINI-C to SDCC:
+

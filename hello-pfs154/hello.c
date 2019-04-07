@@ -17,10 +17,17 @@ __sfr __at(0x05) intrq;
 __sfr __at(0x0b) ihrcr;
 __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
+#ifdef __SDCC_pdk15
+__sfr __at(0x30) tm2c;
+__sfr __at(0x31) tm2ct;
+__sfr __at(0x32) tm2s;
+__sfr __at(0x33) tm2b;
+#else
 __sfr __at(0x1c) tm2c;
 __sfr __at(0x1d) tm2ct;
 __sfr __at(0x17) tm2s;
 __sfr __at(0x09) tm2b;
+#endif
 
 void send_bit(void) __interrupt(0)
 {
