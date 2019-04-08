@@ -72,7 +72,11 @@ int putchar(int c)
 
 unsigned char _sdcc_external_startup(void)
 {
-	ihrcr = *((const unsigned char*)(0x87ed)); // Use factory calibration value for IHRC at 16 Mhz.
+#ifdef __SDCC_pdk15
+	ihrcr = *((const unsigned char*)(0x8bed)); // Use PFS173 factory calibration value for IHRC at 16 Mhz.
+#else
+	ihrcr = *((const unsigned char*)(0x87ed)); // Use PFS154 factory calibration value for IHRC at 16 Mhz.
+#endif
 
 	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
 	clkmd = 0x30; // Disable ILRC
@@ -83,8 +87,8 @@ unsigned char _sdcc_external_startup(void)
 void main(void)
 {
 	// Set timer 2 for interrupt for 1200 baud.
-	tm2c = 0x10; // Use CLK (8 Mhz) by 2 ~> 4 Mhz
-	tm2s = 0x10; // Divide by 16 + 1 ~> 235294 Hz
+	tm2c = 0x10; // Use CLK (8 Mhz)
+	tm2s = 0x20; // Divide by 32 + 1 ~> 235294 Hz
 	tm2b = 195;  // Divide by 195 + 1 ~> 1200 Hz
 	inten = 0x40;
 __asm
