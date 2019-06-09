@@ -1,4 +1,5 @@
 // "Hello, world!" for the Padauk PFS154, to be compiled with SDCC.
+// Repeatedly outputs the string "Hello, World!" at 2400 baud on pin 0 of Port A.
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
@@ -88,8 +89,8 @@ void main(void)
 {
 	// Set timer 2 for interrupt for 1200 baud.
 	tm2c = 0x10; // Use CLK (8 Mhz)
-	tm2s = 0x20; // Divide by 32 + 1 ~> 235294 Hz
-	tm2b = 195;  // Divide by 195 + 1 ~> 1200 Hz
+	tm2s = 0x40; // Divide by 16 ~> 500 kHz
+	tm2b = 207;  // Divide by 207 + 1 ~> 2403 Hz
 	inten = 0x40;
 __asm
 	engint

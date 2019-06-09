@@ -1,4 +1,5 @@
 // A 4-bit counter for the Padauk PFS154 and PFS173, to be compiled with SDCC.
+// Counts seconds from 0 to 15 in binary using the 4 LED on the lower 4 bits of Port B.
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
