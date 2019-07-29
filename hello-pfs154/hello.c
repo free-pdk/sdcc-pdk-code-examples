@@ -1,5 +1,5 @@
-// "Hello, world!" for the Padauk PFS154, to be compiled with SDCC.
-// Repeatedly outputs the string "Hello, World!" at 9600 baud on pin 0 of Port A.
+// "Hello, world!" for the Padauk PFS154 and PFS173, to be compiled with SDCC.
+// Repeatedly outputs the string "Hello, World!" at 9600 baud, 1 stop bit, no parity on pin 0 of Port A.
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
