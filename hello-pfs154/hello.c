@@ -3,8 +3,6 @@
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
 
-// Output on PA0 at 1200 baud.
-
 #include <stdbool.h>
 #include <stdio.h>
 
