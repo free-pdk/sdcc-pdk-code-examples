@@ -1,5 +1,7 @@
 These are code examples for Padauk Microcontrollers.
 
+Suitable simple boards for can be found at: https://github.com/free-pdk/f-eval-boards
+
 They are meant to be compiled with the Small Device C Compiler (SDCC).
 
 For pdk14 and pdk15, the SDCC backend is considered stable.
