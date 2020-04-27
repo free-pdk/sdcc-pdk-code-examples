@@ -7,8 +7,11 @@ For pdk13, the SDCC-based toolchain is still experimental as of 2019-06-09, so r
 
 Currently, there are 4 demos:
 
-count-pfs154: A timer / LED example for the PFS154 and PFS173.
-hello-pfs15: A serial output example for the PFS154 and PFS173.
-timer_irq_blink: An example ported from MINI-C to SDCC:
-watchdog: An example ported from MINI-C to SDCC:
+* count-pfs154: A timer / LED example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
+
+* hello-pfs154: A serial output example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
+
+* timer_irq_blink: An example ported from MINI-C to SDCC.
+
+* watchdog: An example ported from MINI-C to SDCC.
 

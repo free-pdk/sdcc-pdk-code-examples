@@ -1,4 +1,4 @@
-// "Hello, world!" for the Padauk PFS154 and PFS173, to be compiled with SDCC.
+// "Hello, world!" for the Padauk PFC154, PFS154 and PFS173, to be compiled with SDCC.
 // Repeatedly outputs the string "Hello, World!" at 9600 baud, 1 stop bit, no parity on pin 0 of Port A.
 // Written by Philipp Klaus Krause in 2019.
 // Source code under CC0 1.0.
@@ -16,12 +16,12 @@ __sfr __at(0x05) intrq;
 __sfr __at(0x0b) ihrcr;
 __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
-#ifdef __SDCC_pdk15
+#ifdef __SDCC_pdk15 // PFS173
 __sfr __at(0x30) tm2c;
 __sfr __at(0x31) tm2ct;
 __sfr __at(0x32) tm2s;
 __sfr __at(0x33) tm2b;
-#else
+#else // PFC154, PFC232 or PFS154
 __sfr __at(0x1c) tm2c;
 __sfr __at(0x1d) tm2ct;
 __sfr __at(0x17) tm2s;
@@ -74,7 +74,7 @@ unsigned char _sdcc_external_startup(void)
 #ifdef __SDCC_pdk15
 	ihrcr = *((const unsigned char*)(0x8bed)); // Use PFS173 factory calibration value for IHRC at 16 Mhz.
 #else
-	ihrcr = *((const unsigned char*)(0x87ed)); // Use PFS154 factory calibration value for IHRC at 16 Mhz.
+	ihrcr = *((const unsigned char*)(0x87ed)); // Use PFC154 / PFC232 / PFS154 factory calibration value for IHRC at 16 Mhz.
 #endif
 
 	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
