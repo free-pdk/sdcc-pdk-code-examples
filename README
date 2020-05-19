@@ -5,9 +5,9 @@ Suitable simple boards for can be found at: https://github.com/free-pdk/f-eval-b
 They are meant to be compiled with the Small Device C Compiler (SDCC).
 
 For pdk14 and pdk15, the SDCC backend is considered stable.
-For pdk13, the SDCC-based toolchain is still experimental as of 2020-04-27, so running into issues is to be expected.
+For pdk13, the SDCC-based toolchain is still experimental as of 2020-05-19, so running into issues is to be expected.
 
-The count-pfs154 and hello-pfs154 demos have been tested using PFS154 and PFS173 on the pfs154-s16 board. Other configurations havenot yet been tested.
+The count-pfs154 and hello-pfs154 demos have been tested using PFS154 and PFS173 on the pfs154-s16 board. Other configurations have not yet been tested.
 
 Currently, there are 5 demos:
 

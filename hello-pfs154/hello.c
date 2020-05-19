@@ -85,7 +85,7 @@ unsigned char _sdcc_external_startup(void)
 
 void main(void)
 {
-	// Set timer 2 for interrupt for 1200 baud.
+	// Set timer 2 for interrupt for 9600 baud.
 	tm2c = 0x10; // Use CLK (8 Mhz)
 	tm2s = 0x06; // Divide by 6 + 1 ~> 1142857 Hz
 	tm2b = 118;  // Divide by 118 + 1 ~> 9604 Hz
