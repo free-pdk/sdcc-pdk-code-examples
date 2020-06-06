@@ -1,5 +1,5 @@
 // A 2-bit counter for the Padauk PFS172, to be compiled with SDCC.
-// Counts seconds from 0 to 3 in binary using the 4 LED on the lowest and highest bit of port B.
+// Counts seconds from 0 to 3 in binary using the 4 LED on the second-lowest and highest bit of port B.
 // Written by Philipp Klaus Krause 2019-2020.
 // Source code under CC0 1.0.
 
@@ -64,12 +64,12 @@ __asm
 	engint
 __endasm;
 
-	pbc = 0x81;
+	pbc = 0x82;
 
 	for(;;)
 	{
 		uint_fast8_t s = (clock() / 1000) % 4;
-		pb = (s << 6 & 0x80) | (s & 0x01);
+		pb = (s << 6 & 0x80) | (s << 1 & 0x01);
 	}
 }
 
