@@ -2,20 +2,19 @@ These are code examples for Padauk Microcontrollers.
 
 Suitable simple boards for can be found at: https://github.com/free-pdk/f-eval-boards
 
-They are meant to be compiled with the Small Device C Compiler (SDCC).
+They are meant to be compiled with the Small Device C Compiler (SDCC), version 4.0.0 or later.
 
-For pdk14 and pdk15, the SDCC backend is considered stable.
-For pdk13, the SDCC-based toolchain is still experimental as of 2020-05-19, so running into issues is to be expected.
-
-The count-pfs154 and hello-pfs154 demos have been tested using PFS154 and PFS173 on the pfs154-s16 board. Other configurations have not yet been tested.
+The count-s08a demo has been tested using PFS154 and PFS173 on the f-eval-pdk-s08a board.
+The count-s16 and hello-s16 demos have been tested using PFS154 and PFS173 on the f-eval-pdk-s16 board.
+Other configurations have not yet been tested.
 
 Currently, there are 5 demos:
 
-* count-pfc151: A timer / LED example for the PFC151, PFC154, PFC161, PFS154, PFS173 (e.g. on the pfc151-s08 board).
+* count-s08a: A timer / LED example for the PFC151, PFC154, PFC161, PFS154, PFS173 (e.g. on the f-eval-s08a board).
 
-* count-pfs154: A timer / LED example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
+* count-s16: A timer / LED example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
 
-* hello-pfs154: A serial output example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
+* hello-s16: A serial output example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
 
 * timer_irq_blink: An example ported from MINI-C to SDCC.
 
