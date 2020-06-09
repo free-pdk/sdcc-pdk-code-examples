@@ -4,6 +4,7 @@ Suitable simple boards for can be found at: https://github.com/free-pdk/f-eval-b
 
 They are meant to be compiled with the Small Device C Compiler (SDCC), version 4.0.0 or later.
 
+The count-s08 demo has been tested using PFS172 on the f-eval-pdk-s08 board.
 The count-s08a demo has been tested using PFS154 and PFS173 on the f-eval-pdk-s08a board.
 The count-s16 and hello-s16 demos have been tested using PFS154 and PFS173 on the f-eval-pdk-s16 board.
 Other configurations have not yet been tested.

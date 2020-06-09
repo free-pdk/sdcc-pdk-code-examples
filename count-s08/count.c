@@ -12,6 +12,9 @@ __sfr __at(0x05) intrq;
 __sfr __at(0x0b) ihrcr;
 __sfr __at(0x15) pb;
 __sfr __at(0x16) pbc;
+__sfr __at(0x30) tm2c;
+__sfr __at(0x32) tm2s;
+__sfr __at(0x33) tm2b;
 
 typedef unsigned long int clock_t;
 #define CLOCKS_PER_SEC 1000ul
@@ -69,7 +72,7 @@ __endasm;
 	for(;;)
 	{
 		uint_fast8_t s = (clock() / 1000) % 4;
-		pb = (s << 6 & 0x80) | (s << 1 & 0x01);
+		pb = (s << 6 & 0x80) | (s << 1 & 0x02);
 	}
 }
 
