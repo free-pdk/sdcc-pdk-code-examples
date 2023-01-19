@@ -41,7 +41,11 @@ __sfr __at(0x11) pac;
 // Place stuff here that needs to be done immediately after reset (such as disabling a watchdog).
 // For small examples it doesn't matter, but for large programs with many global or static variables,
 // a watchdog that is active after reset otherwise might bite before main() gets executed.
+#if __SDCC_REVISION >= 13762
+unsigned char __sdcc_external_startup(void)
+#else
 unsigned char _sdcc_external_startup(void)
+#endif
 {
 	clkmd = 0x08; // Use IHRC / 16 = 1 Mhz for system clock, disable watchdog.
 

@@ -52,7 +52,11 @@ clock_t clock(void)
 	return(ctmp);
 }
 
+#if __SDCC_REVISION >= 13762
+unsigned char __sdcc_external_startup(void)
+#else
 unsigned char _sdcc_external_startup(void)
+#endif
 {
 #ifdef __SDCC_pdk15
 	ihrcr = *((const unsigned char*)(0x8bed)); // Use PFS173 factory calibration value for IHRC at 16 Mhz.
