@@ -11,15 +11,15 @@ Other configurations have not yet been tested.
 
 Currently, there are 5 demos:
 
-* count-s08: A timer / LED example for the PFS172 (e.g. on the f-eval-s08 board).
+* count-s08: A timer / LED example for the PFS122, PFS172, and PGS134 (e.g. on the f-eval-s08 board).
 
-* count-s08a: A timer / LED example for the PFC151, PFC154, PFC161, PFS154, PFS173 (e.g. on the f-eval-s08a board).
+* count-s08a: A timer / LED example for the PFC151, PFC154, PFC161, PFS123, PFS154, PFS173 (e.g. on the f-eval-s08a board).
 
 * count-s08b: A timer / LED example for the PFC161 (e.g. on the f-eval-s08b board).
 
-* count-s16: A timer / LED example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
+* count-s16: A timer / LED example for the PFC154, PFC232, PFS132, PFS154, PFS173, PGS134, and PGS152 (e.g. on the f-eval-pdk-s16 or f-eval-pdk-s16a board).
 
-* hello-s16: A serial output example for the PFC154, PFC232, PFS154 and PFS173 (e.g. on the pfs154-s16 or pfc232-s16 board).
+* hello-s16: A serial output example for the PFC154, PFC232, PFS132, PFS154, PFS173, PGS134, and PGS152 (e.g. on the f-eval-pdk-s16 or f-eval-pdk-s16a board).
 
 * timer_irq_blink: An example ported from MINI-C to SDCC.
 

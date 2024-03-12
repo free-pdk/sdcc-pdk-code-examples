@@ -14,6 +14,9 @@ __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
 __sfr __at(0x14) pb;
 __sfr __at(0x15) pbc;
+__sfr __at(0x1c) tm2c;
+__sfr __at(0x1e) tm2s;
+__sfr __at(0x1f) tm2b;
 
 typedef unsigned long int clock_t;
 #define CLOCKS_PER_SEC 1000ul
@@ -50,10 +53,10 @@ unsigned char __sdcc_external_startup(void)
 unsigned char _sdcc_external_startup(void)
 #endif
 {
-	ihrcr = *((const unsigned char*)(0x87ed)); // Use PFS154 factory calibration value for IHRC at 16 Mhz.
+	//ihrcr = *((const unsigned char*)(0x87ed)); // Use PFS154 factory calibration value for IHRC at 16 Mhz.
 
-	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
-	clkmd = 0x30; // Disable ILRC
+	//clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
+	//clkmd = 0x30; // Disable ILRC
 
 	return 0; // perform normal initialization
 }
@@ -61,23 +64,23 @@ unsigned char _sdcc_external_startup(void)
 void main(void)
 {
 	// Set timer 2 for interrupt at 1 kHz.
-	tm2c = 0x10; // Use CLK (8 Mhz)
-	tm2s = 0x54; // Divide by 16 * 25 ~> 20 kHz
-	tm2b = 19;  // Divide by 19 + 1 ~> 1 kHz
-	inten = 0x40;
+	//tm2c = 0x10; // Use CLK (8 Mhz)
+	//tm2s = 0x54; // Divide by 16 * 25 ~> 20 kHz
+	//tm2b = 19;  // Divide by 19 + 1 ~> 1 kHz
+	//inten = 0x40;
 
 __asm
 	engint
 __endasm;
 
 	pbc = 0x01;
-	pac = 0x80;
-
+	pac = 0x80;pbc= 0xff; pac = 0xff;
+pa = 0xff; pb = 0xff;
 	for(;;)
 	{
-		uint_fast8_t s = (clock() / 1000) % 4;
+		/*uint_fast8_t s = (clock() / 1000) % 4;
 		pb = s & 0x01;
-		pa = s << 6 & 0x80;
+		pa = s << 6 & 0x80;*/
 	}
 }
 

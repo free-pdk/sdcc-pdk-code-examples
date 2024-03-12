@@ -1,4 +1,4 @@
-// A 2-bit counter for the Padauk PFS172, to be compiled with SDCC.
+// A 2-bit counter for the Padauk PFS122, PFS172, and PGS134, to be compiled with SDCC.
 // Counts seconds from 0 to 3 in binary using the 4 LED on the second-lowest and highest bit of port B.
 // Written by Philipp Klaus Krause 2019-2020.
 // Source code under CC0 1.0.
@@ -51,7 +51,7 @@ unsigned char __sdcc_external_startup(void)
 unsigned char _sdcc_external_startup(void)
 #endif
 {
-	ihrcr = *((const unsigned char*)(0x87ed)); // Use PFS154 factory calibration value for IHRC at 16 Mhz.
+	ihrcr = *((const unsigned char*)(0x87ed)); // Use PFS172 factory calibration value for IHRC at 16 Mhz.
 
 	clkmd = 0x34; // Use IHRC / 2 = 8 Mhz for system clock, disable watchdog.
 	clkmd = 0x30; // Disable ILRC

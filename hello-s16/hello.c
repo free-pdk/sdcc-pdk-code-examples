@@ -1,4 +1,4 @@
-// "Hello, world!" for the Padauk PFC154, PFS154 and PFS173, to be compiled with SDCC.
+// "Hello, world!" for the Padauk PFC154, PFC232, PFS132, PFS154, PFS173, PGS134, and PGS152, to be compiled with SDCC.
 // Repeatedly outputs the string "Hello, World!" at 9600 baud, 1 stop bit, no parity on pin 0 of Port A.
 // Written by Philipp Klaus Krause 2019-2020.
 // Source code under CC0 1.0.
@@ -16,12 +16,12 @@ __sfr __at(0x05) intrq;
 __sfr __at(0x0b) ihrcr;
 __sfr __at(0x10) pa;
 __sfr __at(0x11) pac;
-#ifdef __SDCC_pdk15 // PFS173
+#ifdef __SDCC_pdk15 // PFS173, or PGS134.
 __sfr __at(0x30) tm2c;
 __sfr __at(0x31) tm2ct;
 __sfr __at(0x32) tm2s;
 __sfr __at(0x33) tm2b;
-#else // PFC154, PFC232 or PFS154
+#else // PFC154, PFC232, PFS132, PFS154, or PGS152.
 __sfr __at(0x1c) tm2c;
 __sfr __at(0x1d) tm2ct;
 __sfr __at(0x17) tm2s;

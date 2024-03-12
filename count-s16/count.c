@@ -1,4 +1,4 @@
-// A 4-bit counter for the Padauk PFC154, PFS154 and PFS173, to be compiled with SDCC.
+// A 4-bit counter for the Padauk PFC154, PFC232, PFS132, PFS154, PFS173, PGS134, and PGS152, to be compiled with SDCC.
 // Counts seconds from 0 to 15 in binary using the 4 LED on the lower 4 bits of Port B.
 // Written by Philipp Klaus Krause 2019-2020.
 // Source code under CC0 1.0.
@@ -9,13 +9,13 @@ __sfr __at(0x03) clkmd;
 __sfr __at(0x04) inten;
 __sfr __at(0x05) intrq;
 __sfr __at(0x0b) ihrcr;
-#ifdef __SDCC_pdk15 // PFS173
+#ifdef __SDCC_pdk15 // PFS173, or PGS134.
 __sfr __at(0x13) pb;
 __sfr __at(0x14) pbc;
 __sfr __at(0x30) tm2c;
 __sfr __at(0x32) tm2s;
 __sfr __at(0x33) tm2b;
-#else // PFC154, PFC232 or PFS154
+#else // PFC154, PFC232, PFS132, PFS154, or PGS152.
 __sfr __at(0x14) pb;
 __sfr __at(0x15) pbc;
 __sfr __at(0x1c) tm2c;
